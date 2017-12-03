@@ -4,13 +4,6 @@ import axios from 'axios'
 import './index.css'
 
 class App extends React.Component {
-
-  getInitialState () {
-    return {
-      posts: [],
-    }
-  }
-
   componentDidMount () {
     this.serverRequest =
       axios.get(this.props.source).then(res => {
@@ -27,15 +20,19 @@ class App extends React.Component {
   }
 
   render () {
-    if (this.state) {
-      console.log(this.state.posts[0])
+    const renderContents = () => {
+      if (this.state) {
+        console.log(this.state.posts[0].id)
+        return this.state.posts[0].id
+      } else {
+        return 'ないっす'
+      }
     }
+
     return (
       <div>
-        <h1></h1>
-        <ul>
-
-        </ul>
+        <h1>{renderContents()}</h1>
+        <ul></ul>
       </div>
     )
   }
