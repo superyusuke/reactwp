@@ -1,46 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import axios from 'axios'
+import './index.css'
 
 class App extends React.Component {
 
-   getInitialState() {
-     return {
-       posts: []
-     }
-   }
+  getInitialState () {
+    return {
+      posts: [],
+    }
+  }
 
-  componentDidMount() {
-    this.serverRequest = 
-    axios.get(this.props.source)
-      .then(res => {
+  componentDidMount () {
+    this.serverRequest =
+      axios.get(this.props.source).then(res => {
         if (res && res.data) {
           this.setState({
-           posts: res.data 
-          });
-         }
-    });
+            posts: res.data,
+          })
+        }
+      })
   }
 
-  componentWillUnmount(){
-    this.serverRequest.abort();
+  componentWillUnmount () {
+    this.serverRequest.abort()
   }
 
-  render() {
-  console.log(this.state);
-  return (
-    <div>
-      <h1></h1>
-      <ul>
-        
-      </ul>
-    </div>
-  );
+  render () {
+    if (this.state) {
+      console.log(this.state.posts[0])
+    }
+    return (
+      <div>
+        <h1></h1>
+        <ul>
+
+        </ul>
+      </div>
+    )
   }
 }
 
-  
-  
-
-ReactDOM.render(<App source="http://www.atnr.net/wp-json/wp/v2/posts" />, document.getElementById("root"));
+ReactDOM.render(<App source="http://www.atnr.net/wp-json/wp/v2/posts"/>,
+  document.getElementById('root'))
