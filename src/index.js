@@ -5,21 +5,22 @@ import './index.css';
 
 class App extends React.Component {
 
-  getInitialState() {
-    return {
-      posts: []
-    }
-  }
+   getInitialState() {
+     return {
+       posts: []
+     }
+   }
 
   componentDidMount() {
-    var th = this;
     this.serverRequest = 
     axios.get(this.props.source)
-      .then(function(result) {    
-        th.setState({
-        posts: result.data
-      });
-    })
+      .then(res => {
+        if (res && res.data) {
+          this.setState({
+           posts: res.data 
+          });
+         }
+    });
   }
 
   componentWillUnmount(){
@@ -27,11 +28,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('もじ');
+  console.log(this.props.posts);
   return (
     <div>
-      <h1>{this.props.title}</h1>
+      <h1>{this.props.posts}</h1>
       <ul>
+  
       </ul>
     </div>
   );
