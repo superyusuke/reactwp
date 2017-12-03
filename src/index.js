@@ -22,8 +22,8 @@ class App extends React.Component {
   render () {
     const renderContents = () => {
       if (this.state) {
-        console.log(this.state.posts[0].id)
-        return this.state.posts[0].id
+        console.log(this.state)
+        return this.state.posts.map(post => <li key={post.id}>{post.id} {post.title.rendered}</li>)
       } else {
         return 'ないっす'
       }
