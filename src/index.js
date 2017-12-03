@@ -28,12 +28,12 @@ class App extends React.Component {
   }
 
   render() {
-  console.log(this.props.posts);
+  console.log(this.state);
   return (
     <div>
-      <h1>{this.props.posts}</h1>
+      <h1></h1>
       <ul>
-  
+        
       </ul>
     </div>
   );
